@@ -11,7 +11,25 @@
       "tasks": {
         "devops": 38,
         "research": 3
-      }
+      },
+      "tools": [
+        "apply_patch",
+        "create_goal",
+        "cron",
+        "edit",
+        "exec",
+        "image",
+        "memory_search",
+        "process",
+        "read",
+        "sessions_history",
+        "sessions_list",
+        "skill_workshop",
+        "update_plan",
+        "web_fetch",
+        "web_search",
+        "write"
+      ]
     },
     "agentic": {
       "total": 41,
@@ -24,7 +42,25 @@
       "tasks": {
         "devops": 38,
         "research": 3
-      }
+      },
+      "tools": [
+        "apply_patch",
+        "create_goal",
+        "cron",
+        "edit",
+        "exec",
+        "image",
+        "memory_search",
+        "process",
+        "read",
+        "sessions_history",
+        "sessions_list",
+        "skill_workshop",
+        "update_plan",
+        "web_fetch",
+        "web_search",
+        "write"
+      ]
     },
     "distill": {
       "total": 41,
@@ -37,10 +73,28 @@
       "tasks": {
         "devops": 38,
         "research": 3
-      }
+      },
+      "tools": [
+        "apply_patch",
+        "create_goal",
+        "cron",
+        "edit",
+        "exec",
+        "image",
+        "memory_search",
+        "process",
+        "read",
+        "sessions_history",
+        "sessions_list",
+        "skill_workshop",
+        "update_plan",
+        "web_fetch",
+        "web_search",
+        "write"
+      ]
     }
   },
   "total_sessions": 6,
   "total_traces": 123,
-  "updated_at": "2026-07-13 10:47:57"
+  "updated_at": "2026-07-13 11:35:48"
 }
