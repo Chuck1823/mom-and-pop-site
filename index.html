@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mom and Pop Labs — AI for Your Business</title>
+  <meta name="description" content="An AI assistant that answers your calls, books your customers, and lives in your shop.">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: #0B0B0E; color: #f0f0f0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { color: #5EB5F7; text-decoration: none; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; }
+    .logo { display: flex; align-items: center; gap: 4px; }
+    .logo-text { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.3px; background: linear-gradient(135deg, #5EB5F7, #A78BFA, #5EB5F7); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .logo .labs { font-weight: 400; font-size: 0.85rem; color: #555; }
+    nav .nav-email { font-size: 0.9rem; color: #666; }
+    .hero { padding: 100px 0 70px; text-align: center; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px 5px 6px; border-radius: 200px; font-size: 0.78rem; font-weight: 600; background: rgba(94,181,247,0.1); border: 1px solid rgba(94,181,247,0.2); color: #5EB5F7; margin-bottom: 20px; }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #5EB5F7; box-shadow: 0 0 8px rgba(94,181,247,0.6); }
+    .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; max-width: 640px; margin: 0 auto; }
+    .hero h1 em { font-style: normal; color: #888; }
+    .hero h1 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { color: #777; font-size: 1.05rem; max-width: 480px; margin: 16px auto 24px; }
+    .btn { display: inline-block; padding: 11px 26px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
+    .btn:hover { background: linear-gradient(135deg, #3BA0E0, #7C3AED); }
+    .btn-o { display: inline-block; padding: 11px 26px; border-radius: 6px; font-weight: 500; font-size: 0.95rem; border: 1px solid rgba(94,181,247,0.25); color: #5EB5F7; }
+    .btn-o:hover { background: rgba(94,181,247,0.06); }
+    .section-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 6px; color: #5EB5F7; }
+    .section-label.alt { color: #A78BFA; }
+    .section-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 24px; }
+    .examples { padding: 50px 0 40px; }
+    .example-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .example { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 18px; transition: border-color 0.2s; }
+    .example:hover { border-color: rgba(94,181,247,0.25); }
+    .example .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #555; font-weight: 600; margin-bottom: 6px; }
+    .example h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+    .example .before { color: #555; font-size: 0.84rem; text-decoration: line-through; opacity: 0.6; }
+    .example .after { color: #ccc; font-size: 0.84rem; margin-top: 4px; font-weight: 500; }
+    .features { padding: 30px 0 20px; }
+    .feature-list { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+    .feature-item { font-size: 0.85rem; color: #999; padding: 5px 12px; border-radius: 4px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
+    .how { padding: 40px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .how-step .num { font-size: 0.75rem; font-weight: 700; color: #5EB5F7; margin-bottom: 6px; }
+    .how-step h3 { font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
+    .how-step p { color: #666; font-size: 0.88rem; }
+    .flow { padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+    .flow-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 8px; }
+    .flow-sub { color: #666; font-size: 0.9rem; margin-bottom: 28px; }
+    .flow-steps { display: flex; align-items: flex-start; gap: 0; }
+    .flow-step { flex: 1; text-align: center; padding: 0 12px; }
+    .flow-step .icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .flow-step h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+    .flow-step p { color: #666; font-size: 0.78rem; }
+    .flow-arrow { color: #333; font-size: 1.2rem; padding-top: 12px; }
+    .ownership { padding: 40px 0; }
+    .ownership-box { background: rgba(167,139,250,0.04); border: 1px solid rgba(167,139,250,0.1); border-radius: 10px; padding: 32px; }
+    .ownership-box h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
+    .ownership-box h3 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .ownership-box p { color: #888; font-size: 0.95rem; line-height: 1.5; margin-bottom: 12px; }
+    .ownership-box ul { list-style: none; padding: 0; }
+    .ownership-box li { color: #999; font-size: 0.88rem; padding: 3px 0; }
+    .ownership-box li::before { content: "◆ "; color: #A78BFA; font-size: 0.6rem; }
+    .pricing { padding: 40px 0 60px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .pricing-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 22px; }
+    .pricing-card.highlight { border-color: rgba(94,181,247,0.3); box-shadow: 0 2px 20px rgba(94,181,247,0.1); position: relative; }
+    .pricing-card.highlight::before { content: 'Popular'; position: absolute; top: -9px; right: 16px; padding: 2px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
+    .pricing-card .tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #666; font-weight: 600; margin-bottom: 4px; }
+    .pricing-card h3 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .pricing-card .price { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; margin: 6px 0 2px; color: #5EB5F7; }
+    .pricing-card .price small { font-size: 0.85rem; font-weight: 400; color: #666; }
+    .pricing-card .setup { font-size: 0.8rem; color: #666; margin-bottom: 8px; }
+    .pricing-card .payback { font-size: 0.72rem; color: #A78BFA; padding: 3px 8px; background: rgba(167,139,250,0.08); border-radius: 3px; margin-bottom: 10px; display: inline-block; }
+    .pricing-card ul { list-style: none; padding: 0; }
+    .pricing-card li { font-size: 0.84rem; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); color: #999; }
+    .pricing-card li:last-child { border: none; }
+    .pricing-card .btn-sm { display: block; text-align: center; margin-top: 12px; padding: 9px 18px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
+    .pricing-card .btn-sm-o { display: block; text-align: center; margin-top: 12px; padding: 9px 18px; border-radius: 6px; font-weight: 500; font-size: 0.85rem; border: 1px solid rgba(94,181,247,0.2); color: #5EB5F7; }
+    .bottom-cta { padding: 40px 0 50px; }
+    .cta-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 40px 28px; text-align: center; }
+    .cta-box h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 6px; }
+    .cta-box h2 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 18px; }
+    footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 20px 24px; text-align: center; font-size: 0.8rem; color: #444; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    @media (max-width: 768px) { .example-grid, .pricing-grid, .how-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .flow-steps { flex-direction: column; gap: 16px; } .flow-arrow { display: none; } }
+  </style>
+</head>
+<body>
+  <nav class="container">
+    <div class="logo">
+      <span class="logo-text">Mom and Pop</span>
+      <span class="labs">Labs</span>
+    </div>
+    <a class="nav-email" href="mailto:hello@momandpop.com">hello@momandpop.com</a>
+  </nav>
+
+  <section class="hero container">
+    <div class="badge"><span class="badge-dot"></span>Early Access</div>
+    <h1>An AI assistant that answers your calls.<br><em>Lives in <span class="accent">your shop.</span></em></h1>
+    <p>You're busy. Your phone keeps ringing. Our agent picks up, talks to customers, books appointments, and never drops a lead. No cloud. No dashboard. Just a box on your counter.</p>
+    <div class="row">
+      <a href="mailto:hello@momandpop.com" class="btn">Get Early Access</a>
+      <a href="#pricing" class="btn-o">See Pricing</a>
+    </div>
+  </section>
+
+  <section class="examples container">
+    <div class="section-label">See It in Action</div>
+    <div class="section-title">What does it actually do for your business?</div>
+    <div class="example-grid">
+      <div class="example">
+        <div class="label">Phone</div>
+        <h3>Never miss a customer call</h3>
+        <div class="before">You're with a client. Phone rings. You miss it. They call someone else.</div>
+        <div class="after">Agent answers every call. Handles bookings, FAQs, messages. You stay focused.</div>
+      </div>
+      <div class="example">
+        <div class="label">Bookings</div>
+        <h3>"Do you have space at 3?"</h3>
+        <div class="before">Customer calls, nobody's free to answer the phone for 45 minutes.</div>
+        <div class="after">Agent checks your calendar in real-time, offers open slots, books them, confirms.</div>
+      </div>
+      <div class="example">
+        <div class="label">No-Shows</div>
+        <h3>Cut no-shows in half</h3>
+        <div class="before">3-4 no-shows a week. That's $100-150 gone. Nobody reminded them.</div>
+        <div class="after">Automatic 24hr and 2hr reminder texts. No-shows drop by 50%+.</div>
+      </div>
+      <div class="example">
+        <div class="label">Reviews</div>
+        <h3>Manage your Google reviews</h3>
+        <div class="before">New review comes in. Nobody replies for days. Looks bad.</div>
+        <div class="after">Agent monitors reviews, drafts responses for your approval. You look responsive.</div>
+      </div>
+      <div class="example">
+        <div class="label">Retention</div>
+        <h3>Bring back lost customers</h3>
+        <div class="before">Haven't seen Maria in 6 weeks. She moved on to the salon across town.</div>
+        <div class="after">Agent spots inactive customers, sends "time for your fill?" — they book again.</div>
+      </div>
+      <div class="example">
+        <div class="label">Owner</div>
+        <h3>You just talk to it</h3>
+        <div class="before">Managing bookings, calls, staff — all while working with your hands.</div>
+        <div class="after">"Text everyone tomorrow." "Who's working Thursday?" "How many no-shows?" Agent handles it.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features container">
+    <div class="section-label alt">What You Get</div>
+    <div class="feature-list">
+      <div class="feature-item">24/7 phone answering</div>
+      <div class="feature-item">WhatsApp / SMS booking</div>
+      <div class="feature-item">Appointment reminders</div>
+      <div class="feature-item">Review monitoring</div>
+      <div class="feature-item">Customer retention</div>
+      <div class="feature-item">Bilingual support</div>
+      <div class="feature-item">Your hardware, your data</div>
+    </div>
+  </section>
+
+  <section class="flow container">
+    <div class="section-label">How It Works</div>
+    <div class="flow-title">Your customer has no idea it's AI.</div>
+    <div class="flow-sub">They just think they called or texted your business. Like normal.</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="icon">📞</div>
+        <h4>Customer calls or texts</h4>
+        <p>Your business number. Same number they always use.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="icon">🤖</div>
+        <h4>Agent picks up</h4>
+        <p>Answers questions, checks availability, sounds natural.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="icon">📅</div>
+        <h4>Books the appointment</h4>
+        <p>Adds to your calendar, sends confirmation. Done.</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="icon">✅</div>
+        <h4>You get a notification</h4>
+        <p>"Booked: Sarah, full set, 3:15, $45." You stay focused on work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how container">
+    <div class="section-label">Setup Takes 30 Minutes</div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="num">Step 1</div>
+        <h3>We bring the box</h3>
+        <p>Pre-configured. Plug it in, connect to Wi-Fi. It lives on your counter.</p>
+      </div>
+      <div class="how-step">
+        <div class="num">Step 2</div>
+        <h3>Tell us about your business</h3>
+        <p>Services, prices, hours, staff schedule. We enter everything for you.</p>
+      </div>
+      <div class="how-step">
+        <div class="num">Step 3</div>
+        <h3>It starts answering</h3>
+        <p>Calls and texts route to the agent. You focus on running your business.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ownership container">
+    <div class="ownership-box">
+      <div class="section-label alt">You Own It</div>
+      <h3>Your customers are yours. <span class="accent">Your agent is yours.</span></h3>
+      <p>Every SaaS tool you use — booking apps, POS systems, review tools — is harvesting your customer data. They read your calls, track your patterns, and sell insights to whoever pays.</p>
+      <p>Our box sits on your counter. No cloud. No dashboard. No account. No one can raise your prices overnight or change the terms. You own the hardware. All your customer data stays on it. Nobody else sees it.</p>
+      <ul>
+        <li>No cloud accounts, no dashboards, no passwords to manage</li>
+        <li>Customer data never leaves your box</li>
+        <li>No price hikes, no feature changes, no terms-of-service surprises</li>
+        <li>Someday, opt in to sell anonymized business data — you keep 90% of profits</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pricing container" id="pricing">
+    <div class="section-label">Pricing</div>
+    <div class="section-title">One subscription for your whole business.</div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="tag">Starter</div>
+        <h3>Starter</h3>
+        <div class="price">$40<small>/mo</small></div>
+        <div class="setup">$150 one-time setup</div>
+        <div class="payback">~7 mo to pay back hardware</div>
+        <ul>
+          <li>24/7 phone answering</li>
+          <li>WhatsApp / SMS</li>
+          <li>FAQ responses (hours, prices, services)</li>
+          <li>Basic booking</li>
+        </ul>
+        <a href="mailto:hello@momandpop.com" class="btn-sm-o">Get Started</a>
+      </div>
+      <div class="pricing-card highlight">
+        <div class="tag">Business</div>
+        <h3>Business</h3>
+        <div class="price">$65<small>/mo</small></div>
+        <div class="setup">$200 one-time setup</div>
+        <div class="payback">~4 mo to pay back hardware</div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Appointment reminders (24hr + 2hr)</li>
+          <li>Google review monitoring</li>
+          <li>Customer retention texts</li>
+          <li>Bilingual support</li>
+          <li>Standard support</li>
+        </ul>
+        <a href="mailto:hello@momandpop.com" class="btn-sm">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="tag">Growth</div>
+        <h3>Growth</h3>
+        <div class="price">$95<small>/mo</small></div>
+        <div class="setup">$300 one-time setup</div>
+        <div class="payback">~3 mo to pay back hardware</div>
+        <ul>
+          <li>Everything in Business</li>
+          <li>POS integration (Square, etc.)</li>
+          <li>Instagram DM automation</li>
+          <li>Revenue analytics</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="mailto:hello@momandpop.com" class="btn-sm">Get Started</a>
+      </div>
+    </div>
+    <div class="pricing-grid" style="margin-top: 12px; grid-template-columns: repeat(2, 1fr); max-width: 620px;">
+      <div class="pricing-card">
+        <div class="tag">Lease</div>
+        <h3>Lease</h3>
+        <div class="price">$85<small>/mo</small></div>
+        <div class="setup">$0 upfront</div>
+        <div class="payback">$0 to start — we own the hardware</div>
+        <ul>
+          <li>Everything in Business</li>
+          <li>We own the hardware</li>
+          <li>12-month minimum, then return or buy out</li>
+          <li>Zero risk</li>
+        </ul>
+        <a href="mailto:hello@momandpop.com" class="btn-sm-o">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bottom-cta container">
+    <div class="cta-box">
+      <h2>AI for your <span class="accent">business.</span></h2>
+      <p>Say hi — we'd love to hear from you.</p>
+      <a href="mailto:hello@momandpop.com" class="btn">hello@momandpop.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container"><p>© 2026 Mom and Pop Labs. All rights reserved.</p></div>
+  </footer>
+</body>
+</html>
