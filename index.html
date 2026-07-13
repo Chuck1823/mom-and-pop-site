@@ -5,350 +5,282 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mom and Pop Labs — AI for Your Business</title>
   <meta name="description" content="An AI that runs your front desk, manages your books, and lives on your counter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: #0B0B0E; color: #f0f0f0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0A0A0D; color: #f0f0f0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
     a { color: #5EB5F7; text-decoration: none; }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; }
-    .logo { display: flex; align-items: center; gap: 4px; }
-    .logo-text { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.3px; background: linear-gradient(135deg, #5EB5F7, #A78BFA, #5EB5F7); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .logo .labs { font-weight: 400; font-size: 0.85rem; color: #555; }
-    nav .nav-email { font-size: 0.9rem; color: #666; }
-    .hero { padding: 100px 0 70px; text-align: center; }
-    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px 5px 6px; border-radius: 200px; font-size: 0.78rem; font-weight: 600; background: rgba(94,181,247,0.1); border: 1px solid rgba(94,181,247,0.2); color: #5EB5F7; margin-bottom: 20px; }
-    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #5EB5F7; box-shadow: 0 0 8px rgba(94,181,247,0.6); }
-    .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; max-width: 640px; margin: 0 auto; }
-    .hero h1 em { font-style: normal; color: #888; }
+    .w { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; }
+    .logo-text { font-weight: 800; font-size: 1.15rem; color: #fff; }
+    nav .em { font-size: 0.85rem; color: #444; }
+    .hero { padding: 100px 0 60px; text-align: center; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 8px; border-radius: 200px; font-size: 0.72rem; font-weight: 600; background: rgba(94,181,247,0.06); border: 1px solid rgba(94,181,247,0.1); color: #5EB5F7; margin-bottom: 24px; }
+    .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #5EB5F7; box-shadow: 0 0 6px rgba(94,181,247,0.6); }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 800; letter-spacing: -1.5px; line-height: 1.08; max-width: 600px; margin: 0 auto; }
     .hero h1 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { color: #777; font-size: 1.05rem; max-width: 500px; margin: 16px auto 24px; }
-    .btn { display: inline-block; padding: 11px 26px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
-    .btn:hover { background: linear-gradient(135deg, #3BA0E0, #7C3AED); }
-    .btn-o { display: inline-block; padding: 11px 26px; border-radius: 6px; font-weight: 500; font-size: 0.95rem; border: 1px solid rgba(94,181,247,0.25); color: #5EB5F7; }
-    .btn-o:hover { background: rgba(94,181,247,0.06); }
-    .section-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 6px; color: #5EB5F7; }
-    .section-label.alt { color: #A78BFA; }
-    .section-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 24px; }
-    .examples { padding: 50px 0 40px; }
-    .example-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .example { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 18px; transition: border-color 0.2s; }
-    .example:hover { border-color: rgba(94,181,247,0.25); }
-    .example .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #555; font-weight: 600; margin-bottom: 6px; }
-    .example h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
-    .example .before { color: #555; font-size: 0.84rem; text-decoration: line-through; opacity: 0.6; }
-    .example .after { color: #ccc; font-size: 0.84rem; margin-top: 4px; font-weight: 500; }
-    .features { padding: 30px 0 20px; }
-    .feature-list { display: flex; flex-wrap: wrap; gap: 8px 14px; }
-    .feature-item { font-size: 0.85rem; color: #999; padding: 5px 12px; border-radius: 4px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
-    .flow { padding: 40px 0; }
-    .flow-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 8px; }
-    .flow-sub { color: #666; font-size: 0.9rem; margin-bottom: 28px; }
-    .flow-steps { display: flex; align-items: flex-start; gap: 0; }
-    .flow-step { flex: 1; text-align: center; padding: 0 12px; }
-    .flow-step .icon { font-size: 1.6rem; margin-bottom: 8px; }
-    .flow-step h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
-    .flow-step p { color: #666; font-size: 0.78rem; }
-    .flow-arrow { color: #333; font-size: 1.2rem; padding-top: 12px; }
-    .how { padding: 40px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
-    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .how-step .num { font-size: 0.75rem; font-weight: 700; color: #5EB5F7; margin-bottom: 6px; }
-    .how-step h3 { font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
-    .how-step p { color: #666; font-size: 0.88rem; }
-    .comparison { padding: 40px 0; }
-    .comp-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; }
-    .comp-table { width: 100%; border-collapse: collapse; }
-    .comp-table th, .comp-table td { padding: 12px 16px; font-size: 0.85rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.04); }
-    .comp-table th { font-weight: 600; color: #5EB5F7; background: rgba(94,181,247,0.04); }
-    .comp-table td:first-child { color: #ccc; }
-    .comp-table td { color: #999; }
-    .comp-table .us { color: #A78BFA; font-weight: 600; }
-    .comp-table .no { color: #666; }
-    .ownership { padding: 40px 0; }
-    .ownership-box { background: rgba(167,139,250,0.04); border: 1px solid rgba(167,139,250,0.1); border-radius: 10px; padding: 32px; }
-    .ownership-box h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
-    .ownership-box h3 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .ownership-box h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
-    .ownership-box h2 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .ownership-box p { color: #888; font-size: 0.95rem; line-height: 1.5; margin-bottom: 12px; }
-    .ownership-box ul { list-style: none; padding: 0; }
-    .ownership-box li { color: #999; font-size: 0.88rem; padding: 3px 0; }
-    .ownership-box li::before { content: "◆ "; color: #A78BFA; font-size: 0.6rem; }
-    .pricing { padding: 40px 0 60px; border-top: 1px solid rgba(255,255,255,0.05); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .pricing-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 22px; }
-    .pricing-card.highlight { border-color: rgba(94,181,247,0.3); box-shadow: 0 2px 20px rgba(94,181,247,0.1); position: relative; }
-    .pricing-card.highlight::before { content: 'Popular'; position: absolute; top: -9px; right: 16px; padding: 2px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
-    .pricing-card .tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #666; font-weight: 600; margin-bottom: 4px; }
-    .pricing-card h3 { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
-    .pricing-card .price { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; margin: 6px 0 2px; color: #5EB5F7; }
-    .pricing-card .price small { font-size: 0.85rem; font-weight: 400; color: #666; }
-    .pricing-card .setup { font-size: 0.8rem; color: #666; margin-bottom: 8px; }
-    .pricing-card .payback { font-size: 0.72rem; color: #A78BFA; padding: 3px 8px; background: rgba(167,139,250,0.08); border-radius: 3px; margin-bottom: 10px; display: inline-block; }
-    .pricing-card ul { list-style: none; padding: 0; }
-    .pricing-card li { font-size: 0.84rem; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); color: #999; }
-    .pricing-card li:last-child { border: none; }
-    .pricing-card .btn-sm { display: block; text-align: center; margin-top: 12px; padding: 9px 18px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
-    .pricing-card .btn-sm-o { display: block; text-align: center; margin-top: 12px; padding: 9px 18px; border-radius: 6px; font-weight: 500; font-size: 0.85rem; border: 1px solid rgba(94,181,247,0.2); color: #5EB5F7; }
-    .bottom-cta { padding: 40px 0 50px; }
-    .cta-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 40px 28px; text-align: center; }
-    .cta-box h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 6px; }
+    .hero p { color: #666; font-size: 1rem; max-width: 440px; margin: 18px auto 28px; }
+    .btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
+    .btn-o { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1); color: #aaa; }
+    .btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .sl { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 8px; color: #5EB5F7; }
+    .sl.alt { color: #A78BFA; }
+    .st { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; }
+    .line { height: 1px; background: rgba(255,255,255,0.04); }
+    .cards { padding: 60px 0; }
+    .c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .c-card { padding: 20px; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; }
+    .c-card .label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: #5EB5F7; margin-bottom: 8px; }
+    .c-card h3 { font-size: 0.88rem; font-weight: 600; margin-bottom: 8px; color: #eee; }
+    .c-card .b { color: #444; font-size: 0.8rem; text-decoration: line-through; margin-bottom: 4px; }
+    .c-card .a { color: #aaa; font-size: 0.8rem; }
+    .flow-section { padding: 40px 0; }
+    .flow-s { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 20px; }
+    .flow-i { padding: 20px 16px; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; text-align: center; }
+    .flow-i .n { font-size: 0.7rem; font-weight: 800; color: #5EB5F7; margin-bottom: 8px; }
+    .flow-i h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 4px; color: #eee; }
+    .flow-i p { color: #555; font-size: 0.75rem; }
+    .setup { padding: 50px 0; }
+    .s-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .s-step .n { font-size: 0.7rem; font-weight: 700; color: #5EB5F7; margin-bottom: 6px; }
+    .s-step h3 { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: #eee; }
+    .s-step p { color: #555; font-size: 0.85rem; }
+    .own-box { background: rgba(94,181,247,0.03); border: 1px solid rgba(94,181,247,0.08); border-radius: 10px; padding: 32px; margin: 40px 0; }
+    .own-box h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; color: #eee; }
+    .own-box h2 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .own-box p { color: #666; font-size: 0.9rem; margin-bottom: 8px; }
+    .own-box ul { list-style: none; padding: 0; margin-top: 12px; }
+    .own-box li { color: #777; font-size: 0.84rem; padding: 3px 0; }
+    .own-box li::before { content: "▸ "; color: #5EB5F7; font-weight: 700; }
+    .pricing { padding: 50px 0 60px; }
+    .p-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .p-card { background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 24px; }
+    .p-card.hot { border-color: rgba(94,181,247,0.2); background: rgba(94,181,247,0.03); }
+    .p-card .tag { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: #444; margin-bottom: 4px; }
+    .p-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; color: #eee; }
+    .p-card .price { font-size: 2rem; font-weight: 800; color: #5EB5F7; letter-spacing: -0.5px; }
+    .p-card .price small { font-size: 0.8rem; font-weight: 400; color: #666; }
+    .p-card .setup { font-size: 0.75rem; color: #555; margin: 4px 0 4px; }
+    .p-card .pb { font-size: 0.7rem; color: #A78BFA; padding: 3px 8px; background: rgba(167,139,250,0.06); border-radius: 3px; display: inline-block; margin-bottom: 12px; }
+    .p-card ul { list-style: none; padding: 0; }
+    .p-card li { font-size: 0.8rm; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.03); color: #888; }
+    .p-card li:last-child { border: none; }
+    .p-card .bs { display: block; text-align: center; margin-top: 16px; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
+    .p-card .bo { display: block; text-align: center; margin-top: 16px; padding: 10px 18px; border-radius: 8px; font-weight: 500; font-size: 0.82rem; border: 1px solid rgba(255,255,255,0.08); color: #aaa; }
+    .cta { padding: 40px 0 60px; text-align: center; }
+    .cta-box { background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 40px 24px; }
+    .cta-box h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; color: #eee; }
     .cta-box h2 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 18px; }
-    footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 20px 24px; text-align: center; font-size: 0.8rem; color: #444; }
-    .row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-    @media (max-width: 768px) { .example-grid, .pricing-grid, .how-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) { .flow-steps { flex-direction: column; gap: 16px; } .flow-arrow { display: none; } }
-    @media (max-width: 768px) { .comp-table { font-size: 0.75rem; } .comp-table th, .comp-table td { padding: 8px; } }
+    .cta-box p { color: #555; font-size: 0.9rem; margin-bottom: 18px; }
+    footer { border-top: 1px solid rgba(255,255,255,0.04); padding: 20px 24px; text-align: center; font-size: 0.78rem; color: #333; }
+    @media (max-width: 768px) { .c-grid, .flow-s, .p-grid, .s-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <nav class="container">
-    <div class="logo">
+  <nav class="w">
+    <div>
       <span class="logo-text">Mom and Pop</span>
-      <span class="labs">Labs</span>
+      <span style="font-weight:400;font-size:0.8rem;color:#444"> Labs</span>
     </div>
-    <a class="nav-email" href="mailto:hello@momandpop.com">hello@momandpop.com</a>
+    <a class="em" href="mailto:hello@momandpop.com">hello@momandpop.com</a>
   </nav>
 
-  <section class="hero container">
-    <div class="badge"><span class="badge-dot"></span>Early Access</div>
-    <h1>Not just an answering service.<br><em>It runs your <span class="accent">front desk.</span></em></h1>
-    <p>It answers calls and texts your customers. But it also manages bookings, cuts no-shows, brings back lost customers, handles owner queries, and monitors your reviews. One box. Your whole operation.</p>
-    <div class="row">
+  <section class="hero w">
+    <div class="badge">Early Access</div>
+    <h1>It runs your <span class="accent">front desk.</span></h1>
+    <p>Answers calls. Books customers. Sends reminders. Cuts no-shows. One box on your counter.</p>
+    <div class="btns">
       <a href="mailto:hello@momandpop.com" class="btn">Get Early Access</a>
       <a href="#pricing" class="btn-o">See Pricing</a>
     </div>
   </section>
 
-  <section class="examples container">
-    <div class="section-label">What It Does</div>
-    <div class="section-title">It's the employee who never sleeps, never quits, and costs less than your phone bill.</div>
-    <div class="example-grid">
-      <div class="example">
-        <div class="label">Phone & Chat</div>
-        <h3>Never miss a customer call</h3>
-        <div class="before">You're with a client. Phone rings. You miss it. They call someone else.</div>
-        <div class="after">Agent answers every call 24/7. Calls, texts, WhatsApp. Handles bookings, FAQs, messages. You stay focused.</div>
+  <div class="line"></div>
+
+  <section class="cards w">
+    <div class="sl">What it does</div>
+    <div class="st">Your whole front desk, automated.</div>
+    <div class="c-grid">
+      <div class="c-card">
+        <div class="label">Phone</div>
+        <h3>Never miss a call</h3>
+        <div class="b">Customer calls. Nobody answers. They hang up.</div>
+        <div class="a">Agent answers every call. Books them. Sends a confirmation.</div>
       </div>
-      <div class="example">
-        <div class="label">Intake</div>
-        <h3>New customer onboarding</h3>
-        <div class="before">New customer calls — you collect their name, service, preference, allergies. Takes forever.</div>
-        <div class="after">Agent collects everything on first contact. Customer profile saved. Ready for the visit.</div>
+      <div class="c-card">
+        <div class="label">Text</div>
+        <h3>Books from texts too</h3>
+        <div class="b">"Do you have space at 3?" — nobody replies for 45 min.</div>
+        <div class="a">Agent replies instantly. Offers times. Books them.</div>
       </div>
-      <div class="example">
-        <div class="label">Bookings</div>
-        <h3>Full booking lifecycle</h3>
-        <div class="before">Customer calls, nobody's free to answer. Eventually someone calls back and manually books.</div>
-        <div class="after">Agent checks your calendar in real-time, offers slots, books, sends confirmation, reminds them.</div>
+      <div class="c-card">
+        <div class="label">Reminders</div>
+        <h3>Cuts no-shows in half</h3>
+        <div class="b">3-4 no-shows a week. Nobody reminded them.</div>
+        <div class="a">Automatic text reminders. No-shows drop 50%.</div>
       </div>
-      <div class="example">
-        <div class="label">No-Shows</div>
-        <h3>Cut no-shows in half</h3>
-        <div class="before">3-4 no-shows a week. That's $100-150. Nobody reminded them. Nobody followed up.</div>
-        <div class="after">Automatic 24hr and 2hr reminders. No-shows drop 50%+. Failed no-shows get rescheduled automatically.</div>
-      </div>
-      <div class="example">
+      <div class="c-card">
         <div class="label">Retention</div>
-        <h3>Bring back customers who left</h3>
-        <div class="before">Haven't seen Maria in 6 weeks. No one noticed. She went elsewhere.</div>
-        <div class="after">Agent spots inactive customers, texts "time for your fill?" — they book. You didn't lift a finger.</div>
-      </div>
-      <div class="example">
-        <div class="label">Owner</div>
-        <h3>You run the business, it runs the desk</h3>
-        <div class="before">Managing bookings, calls, staff, reviews, vendors — all while working with your hands.</div>
-        <div class="after">"Send everyone a reminder." "Who's working Thursday?" "How many no-shows?" Agent handles it.</div>
+        <h3>Brings back lost customers</h3>
+        <div class="b">Haven't seen Maria in 6 weeks. Nobody noticed.</div>
+        <div class="a">Agent texts "time for your fill?" — she books.</div>
       </div>
     </div>
   </section>
 
-  <section class="features container">
-    <div class="section-label alt">What You Get</div>
-    <div class="feature-list">
-      <div class="feature-item">24/7 phone answering</div>
-      <div class="feature-item">WhatsApp / SMS / text</div>
-      <div class="feature-item">Booking & calendar</div>
-      <div class="feature-item">Customer intake & profiles</div>
-      <div class="feature-item">Appointment reminders</div>
-      <div class="feature-item">No-show reduction</div>
-      <div class="feature-item">Customer retention</div>
-      <div class="feature-item">Review monitoring</div>
-      <div class="feature-item">Bilingual (EN/KO/VN)</div>
-      <div class="feature-item">Owner voice commands</div>
-      <div class="feature-item">Your hardware, your data</div>
-    </div>
-  </section>
+  <div class="line"></div>
 
-  <section class="flow container">
-    <div class="section-label">How It Works</div>
-    <div class="flow-title">Your customer has no idea it's AI.</div>
-    <div class="flow-sub">They just think they called or texted your business. Like normal.</div>
-    <div class="flow-steps">
-      <div class="flow-step">
-        <div class="icon">📞</div>
-        <h4>Customer calls or texts</h4>
-        <p>Your business number. Same number they always use.</p>
+  <section class="flow-section w">
+    <div class="sl">How it works</div>
+    <div class="st">Four steps. Customer doesn't know it's AI.</div>
+    <div class="flow-s">
+      <div class="flow-i">
+        <div class="n">01</div>
+        <h4>Customer calls</h4>
+        <p>Same number they always use.</p>
       </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="icon">🤖</div>
-        <h4>Agent picks up</h4>
-        <p>Answers, collects info, checks availability. Professional tone.</p>
+      <div class="flow-i">
+        <div class="n">02</div>
+        <h4>Agent answers</h4>
+        <p>Checks your calendar. Sounds pro.</p>
       </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="icon">📅</div>
-        <h4>Books & confirms</h4>
-        <p>Adds to calendar, sends confirmation text. Creates customer profile.</p>
+      <div class="flow-i">
+        <div class="n">03</div>
+        <h4>Books it</h4>
+        <p>Adds to calendar. Sends confirmation.</p>
       </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="icon">✅</div>
-        <h4>You get the summary</h4>
-        <p>"Booked: Sarah, full set, 3:15, $45." No extra work for you.</p>
+      <div class="flow-i">
+        <div class="n">04</div>
+        <h4>You get a summary</h4>
+        <p>"Booked: Sarah, 3:15, $45."</p>
       </div>
     </div>
   </section>
 
-  <section class="how container">
-    <div class="section-label">Setup Takes 30 Minutes</div>
-    <div class="how-grid">
-      <div class="how-step">
-        <div class="num">Step 1</div>
+  <div class="line"></div>
+
+  <section class="setup w">
+    <div class="sl">Setup</div>
+    <div class="st">30 minutes. That's it.</div>
+    <div class="s-grid">
+      <div class="s-step">
+        <div class="n">Step 1</div>
         <h3>We bring the box</h3>
-        <p>Pre-configured. Plug it in, connect to Wi-Fi. It lives on your counter.</p>
+        <p>Plug it in. Connect to Wi-Fi. Done.</p>
       </div>
-      <div class="how-step">
-        <div class="num">Step 2</div>
-        <h3>We set up your business</h3>
-        <p>Services, prices, hours, staff, booking calendar. We enter everything. You tell us, we build it.</p>
+      <div class="s-step">
+        <div class="n">Step 2</div>
+        <h3>Set your business</h3>
+        <p>Services, prices, hours. We enter it all.</p>
       </div>
-      <div class="how-step">
-        <div class="num">Step 3</div>
+      <div class="s-step">
+        <div class="n">Step 3</div>
         <h3>It starts running</h3>
-        <p>Calls, texts, bookings, reminders — all automated. You focus on the work.</p>
+        <p>Calls, texts, bookings, reminders — all automated.</p>
       </div>
     </div>
   </section>
 
-  <section class="comparison container">
-    <div class="section-label">How It Compares</div>
-    <div class="section-title">Not a chatbot. Not a booking app. Not a call center.</div>
-    <div class="comp-box">
-      <table class="comp-table">
-        <tr><th></th><th>Mom and Pop</th><th>AI Chatbot</th><th>Booking App<br>(Vagaro/Fresha)</th><th>Call Answering<br>Service</th><th>In-House<br>Receptionist</th></tr>
-        <tr><td>24/7 phone answering</td><td class="us">✅</td><td class="no">❌</td><td class="no">❌</td><td class="us">✅</td><td class="no">❌</td></tr>
-        <tr><td>Full booking lifecycle</td><td class="us">✅</td><td class="no">Partial</td><td class="us">✅</td><td class="no">❌</td><td class="us">✅</td></tr>
-        <tr><td>Customer intake & profiles</td><td class="us">✅</td><td class="no">Partial</td><td class="no">❌</td><td class="no">❌</td><td class="us">✅</td></tr>
-        <tr><td>No-show reduction</td><td class="us">✅</td><td class="no">❌</td><td class="no">Varies</td><td class="no">❌</td><td class="us">✅</td></tr>
-        <tr><td>Customer retention</td><td class="us">✅</td><td class="no">❌</td><td class="no">❌</td><td class="no">❌</td><td class="no">Rarely</td></tr>
-        <tr><td>Review management</td><td class="us">✅</td><td class="no">❌</td><td class="no">❌</td><td class="no">❌</td><td class="no">Rarely</td></tr>
-        <tr><td>Bilingual support</td><td class="us">✅</td><td class="no">Sometimes</td><td class="no">❌</td><td class="no">No</td><td class="no">Only if hired</td></tr>
-        <tr><td>Data stays on-site</td><td class="us">✅</td><td class="no">Cloud</td><td class="no">Cloud</td><td class="no">Cloud</td><td class="us">✅</td></tr>
-        <tr><td>Monthly cost</td><td class="us">$40–$95/mo</td><td>$50–$300/mo</td><td>$25–$100/mo</td><td>$100–$500/mo</td><td>$2,000–$3,500/mo</td></tr>
-        <tr><td>No per-call fees</td><td class="us">✅</td><td class="no">Varies</td><td class="no">N/A</td><td class="no">Varies</td><td class="us">✅</td></tr>
-      </table>
-    </div>
-  </section>
+  <div class="line"></div>
 
-  <section class="ownership container">
-    <div class="ownership-box">
-      <div class="section-label alt">You Own It</div>
-      <h2>Your customers are yours. <span class="accent">Everything else too.</span></h2>
-      <p>Every SaaS tool — booking apps, POS systems, review platforms — harvests your customer data. Your patterns, your revenue, your relationships. They monetize it. You don't.</p>
-      <p>Our box sits on your counter. No cloud. No dashboard. No account. No one can raise prices overnight or change the rules. You own the hardware. All your customer data, profiles, and booking history stay on it. Nobody else touches it.</p>
-      <p>Someday, opt in to sell anonymized business data — pricing trends, service patterns, seasonal demand. Beauty and retail companies pay for this. You opt in. You keep 90%. We handle the rest.</p>
+  <section class="w">
+    <div class="own-box">
+      <div class="sl alt">You own it</div>
+      <h2>Your customers. <span class="accent">Your data. Your box.</span></h2>
+      <p>Booking apps, POS systems, review tools — they all read your data. Ours doesn't. Everything stays on the box. No cloud. No dashboard. No account.</p>
       <ul>
-        <li>No cloud accounts, no dashboards, no passwords to manage</li>
-        <li>All data stays on your box — customer profiles, booking history, revenue</li>
-        <li>No price hikes, no feature changes, no terms-of-service surprises</li>
-        <li>Opt-in data monetization — you keep 90% of profits, we handle sales</li>
+        <li>No cloud accounts. No passwords to manage.</li>
+        <li>All data stays on your box.</li>
+        <li>No price hikes. No terms of service changes.</li>
       </ul>
     </div>
   </section>
 
-  <section class="pricing container" id="pricing">
-    <div class="section-label">Pricing</div>
-    <div class="section-title">Less than a part-time employee. More useful than a full one.</div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
+  <div class="line"></div>
+
+  <section class="pricing w" id="pricing">
+    <div class="sl">Pricing</div>
+    <div class="st">Less than a part-time employee.</div>
+    <div class="p-grid">
+      <div class="p-card">
         <div class="tag">Starter</div>
         <h3>Starter</h3>
         <div class="price">$40<small>/mo</small></div>
         <div class="setup">$150 one-time setup</div>
-        <div class="payback">~7 mo to pay back hardware</div>
+        <div class="pb">~7 mo payback</div>
         <ul>
           <li>24/7 phone answering</li>
           <li>WhatsApp / SMS</li>
-          <li>FAQ responses (hours, prices, services)</li>
+          <li>FAQ responses</li>
           <li>Basic booking</li>
         </ul>
-        <a href="mailto:hello@momandpop.com" class="btn-sm-o">Get Started</a>
+        <a href="mailto:hello@momandpop.com" class="bo">Get Started</a>
       </div>
-      <div class="pricing-card highlight">
+      <div class="p-card hot">
         <div class="tag">Business</div>
         <h3>Business</h3>
         <div class="price">$65<small>/mo</small></div>
         <div class="setup">$200 one-time setup</div>
-        <div class="payback">~4 mo to pay back hardware</div>
+        <div class="pb">~4 mo payback</div>
         <ul>
           <li>Everything in Starter</li>
-          <li>Customer intake & profiles</li>
-          <li>Appointment reminders (24hr + 2hr)</li>
+          <li>Customer profiles</li>
+          <li>Appointment reminders</li>
           <li>No-show reduction</li>
-          <li>Google review monitoring</li>
-          <li>Customer retention texts</li>
-          <li>Bilingual support (EN/KO/VN)</li>
+          <li>Google reviews</li>
+          <li>Customer retention</li>
+          <li>Bilingual support</li>
           <li>Standard support</li>
         </ul>
-        <a href="mailto:hello@momandpop.com" class="btn-sm">Get Started</a>
+        <a href="mailto:hello@momandpop.com" class="bs">Get Started</a>
       </div>
-      <div class="pricing-card">
+      <div class="p-card">
         <div class="tag">Growth</div>
         <h3>Growth</h3>
         <div class="price">$95<small>/mo</small></div>
         <div class="setup">$300 one-time setup</div>
-        <div class="payback">~3 mo to pay back hardware</div>
+        <div class="pb">~3 mo payback</div>
         <ul>
           <li>Everything in Business</li>
-          <li>POS integration (Square, etc.)</li>
-          <li>Instagram DM automation</li>
+          <li>POS integration</li>
+          <li>Instagram DMs</li>
           <li>Revenue analytics</li>
           <li>Owner voice commands</li>
           <li>Priority support</li>
         </ul>
-        <a href="mailto:hello@momandpop.com" class="btn-sm">Get Started</a>
+        <a href="mailto:hello@momandpop.com" class="bs">Get Started</a>
       </div>
     </div>
-    <div class="pricing-grid" style="margin-top: 12px; grid-template-columns: repeat(2, 1fr); max-width: 620px;">
-      <div class="pricing-card">
+    <div class="p-grid" style="margin-top: 12px; max-width: 600px;">
+      <div class="p-card">
         <div class="tag">Lease</div>
         <h3>Lease</h3>
         <div class="price">$85<small>/mo</small></div>
         <div class="setup">$0 upfront</div>
-        <div class="payback">$0 to start — we own the hardware</div>
+        <div class="pb">$0 to start</div>
         <ul>
           <li>Everything in Business</li>
           <li>We own the hardware</li>
-          <li>12-month minimum, then return or buy out</li>
+          <li>12-month minimum</li>
           <li>Zero risk</li>
         </ul>
-        <a href="mailto:hello@momandpop.com" class="btn-sm-o">Get Started</a>
+        <a href="mailto:hello@momandpop.com" class="bo">Get Started</a>
       </div>
     </div>
   </section>
 
-  <section class="bottom-cta container">
+  <div class="line"></div>
+
+  <section class="cta w">
     <div class="cta-box">
       <h2>AI that runs your <span class="accent">front desk.</span></h2>
-      <p>Say hi — we'd love to hear from you.</p>
+      <p>Say hi.</p>
       <a href="mailto:hello@momandpop.com" class="btn">hello@momandpop.com</a>
     </div>
   </section>
 
-  <footer>
-    <div class="container"><p>© 2026 Mom and Pop Labs. All rights reserved.</p></div>
-  </footer>
+  <footer class="w"><p>© 2026 Mom and Pop Labs. All rights reserved.</p></footer>
 </body>
 </html>
