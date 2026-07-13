@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mom and Pop Labs — AI for Your Business</title>
-  <meta name="description" content="Your first AI employee. Answers calls, books customers, manages your calendar.">
+  <meta name="description" content="Your first AI employee.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,6 +12,7 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0A0A0D; color: #f0f0f0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
     a { color: #5EB5F7; text-decoration: none; }
+    button { font-family: inherit; }
     .w { max-width: 780px; margin: 0 auto; padding: 0 24px; }
     nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; }
     .logo-text { font-weight: 800; font-size: 1.15rem; color: #fff; }
@@ -22,86 +23,109 @@
     .hero h1 { font-size: clamp(2rem, 7vw, 3.2rem); font-weight: 800; line-height: 1.1; margin: 0 0 14px; }
     .hero h1 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero p { color: #666; font-size: 0.92rem; margin: 0 18px 24px; }
-    .hero p .dash { color: #444; }
-    .btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
-    .btn-o { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1); color: #aaa; }
+    .btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; border: none; cursor: pointer; }
+    .btn-o { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1); color: #aaa; background: transparent; cursor: pointer; }
     .btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
     .sl { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 8px; color: #5EB5F7; }
+    .st { font-size: clamp(1.1rem, 4vw, 1.3rem); font-weight: 700; margin-bottom: 20px; }
+    .line { height: 1px; background: rgba(255,255,255,0.04); }
+
+    /* Toggle */
     .toggle-wrap { display: flex; gap: 8px; margin-bottom: 20px; justify-content: center; }
     .toggle-btn { padding: 6px 18px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); color: #666; background: transparent; cursor: pointer; }
     .toggle-btn.active { background: rgba(94,181,247,0.1); border-color: #5EB5F7; color: #5EB5F7; }
     .uc { display: none; }
     .uc.active { display: block; }
-    .st { font-size: clamp(1.1rem, 4vw, 1.3rem); font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; }
-    .line { height: 1px; background: rgba(255,255,255,0.04); }
+
     .cards { padding: 60px 0; }
     .c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .c-card { padding: 20px; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; }
     .c-card .label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: #5EB5F7; margin-bottom: 8px; }
-    .c-card h3 { font-size: 0.88rem; font-weight: 600; margin-bottom: 8px; color: #eee; }
+    .c-card h3 { font-size: 0.88rem; font-weight: 600; margin-bottom: 8px; }
     .c-card .b { color: #444; font-size: 0.8rem; text-decoration: line-through; margin-bottom: 4px; }
     .c-card .a { color: #aaa; font-size: 0.8rem; }
     .flow-section { padding: 40px 0; }
     .flow-s { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 20px; }
     .flow-i { padding: 20px 16px; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; text-align: center; }
     .flow-i .n { font-size: 0.7rem; font-weight: 800; color: #5EB5F7; margin-bottom: 8px; }
-    .flow-i h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 4px; color: #eee; }
+    .flow-i h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 4px; }
     .flow-i p { color: #555; font-size: 0.75rem; }
     .setup { padding: 50px 0; }
     .s-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .s-step .n { font-size: 0.7rem; font-weight: 700; color: #5EB5F7; margin-bottom: 6px; }
-    .s-step h3 { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: #eee; }
+    .s-step h3 { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
     .s-step p { color: #555; font-size: 0.85rem; }
-    .data-box { background: rgba(167,139,250,0.03); border: 1px solid rgba(167,139,250,0.08); border-radius: 10px; padding: 32px; margin: 40px 0; }
-    .data-box h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
-    .data-box h2 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .data-box p { color: #666; font-size: 0.9rem; margin-bottom: 8px; }
-    .data-box .asterisk { color: #555; font-size: 0.72rem; margin-top: 10px; font-style: italic; }
     .migrate-box { background: rgba(0,230,118,0.03); border: 1px solid rgba(0,230,118,0.08); border-radius: 10px; padding: 32px; margin: 40px 0; }
+    .migrate-box .sl { color: #00e676; }
     .migrate-box h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
     .migrate-box p { color: #666; font-size: 0.9rem; margin-bottom: 8px; }
     .migrate-box ol { padding-left: 20px; }
     .migrate-box li { color: #777; font-size: 0.84rem; padding: 4px 0; }
     .roi-section { padding: 50px 0; }
     .roi-section p { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
+    .data-box { background: rgba(167,139,250,0.03); border: 1px solid rgba(167,139,250,0.08); border-radius: 10px; padding: 32px; margin: 40px 0; }
+    .data-box h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+    .data-box h2 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .data-box p { color: #666; font-size: 0.9rem; margin-bottom: 8px; }
+    .data-box .asterisk { color: #555; font-size: 0.72rem; margin-top: 10px; font-style: italic; }
     .pricing { padding: 50px 0 60px; }
     .p-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .p-card { background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 24px; }
     .p-card.hot { border-color: rgba(94,181,247,0.2); background: rgba(94,181,247,0.03); }
     .p-card .tag { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: #444; margin-bottom: 4px; }
-    .p-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; color: #eee; }
-    .p-card .price { font-size: 2rem; font-weight: 800; color: #5EB5F7; letter-spacing: -0.5px; }
+    .p-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; }
+    .p-card .price { font-size: 2rem; font-weight: 800; color: #5EB5F7; }
     .p-card .price small { font-size: 0.8rem; font-weight: 400; color: #666; }
     .p-card .setup { font-size: 0.75rem; color: #555; margin: 4px 0 4px; }
     .p-card .pb { font-size: 0.7rem; color: #A78BFA; padding: 3px 8px; background: rgba(167,139,250,0.06); border-radius: 3px; display: inline-block; margin-bottom: 12px; }
     .p-card ul { list-style: none; padding: 0; }
     .p-card li { font-size: 0.8rem; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.03); color: #888; }
     .p-card li:last-child { border: none; }
-    .p-card .bs { display: block; text-align: center; margin-top: 16px; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
-    .p-card .bo { display: block; text-align: center; margin-top: 16px; padding: 10px 18px; border-radius: 8px; font-weight: 500; font-size: 0.82rem; border: 1px solid rgba(255,255,255,0.08); color: #aaa; }
+    .p-card .bs { display: block; text-align: center; margin-top: 16px; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; border: none; cursor: pointer; }
+    .p-card .bo { display: block; text-align: center; margin-top: 16px; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; border: 1px solid rgba(255,255,255,0.1); color: #aaa; background: transparent; cursor: pointer; }
     .cta { padding: 40px 0 60px; text-align: center; }
     .cta-box { background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 40px 24px; }
     .cta-box h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
     .cta-box h2 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .cta-box p { color: #555; font-size: 0.9rem; margin-bottom: 18px; }
+    .cta-box p { color: #555; font-size: 0.9rem; margin-bottom: 18px; text-align: center; }
     footer { border-top: 1px solid rgba(255,255,255,0.04); padding: 20px 24px; text-align: center; font-size: 0.78rem; color: #333; }
+
+    /* Waitlist modal */
+    .modal-bg { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
+    .modal-bg.show { display: flex; }
+    .modal-box { background: #1a1a24; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; width: 90%; max-width: 380px; position: relative; }
+    .modal-box h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .modal-box .msub { font-size: 0.8rem; color: #888; margin-bottom: 16px; }
+    .mf { margin-bottom: 12px; }
+    .mf label { display: block; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #666; margin-bottom: 4px; }
+    .mf input, .mf select { width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); background: #12121a; color: #e0e0e0; font-size: 0.85rem; outline: none; font-family: inherit; }
+    .mf select { background-color: #12121a; }
+    .mf input:focus, .mf select:focus { border-color: #5EB5F7; }
+    .msubmit { width: 100%; padding: 10px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; border: none; cursor: pointer; }
+    .mclose { position: absolute; top: 12px; right: 14px; background: none; border: none; color: #666; font-size: 1.3rem; cursor: pointer; }
+    .mthank { display: none; text-align: center; padding: 20px 0; }
+    .mthank.show { display: block; }
+    .mthank h3 { color: #00e676; }
+    .mfields.hide { display: none; }
+
     @media (max-width: 768px) { .c-grid, .flow-s, .p-grid, .s-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <nav class="w">
-    <div><span class="logo-text">Mom and Pop</span><span style="font-weight:400;font-size:0.8rem;color:#444"> Labs</span></div>
-    <a class="em" href="mailto:hello@momandpoplabs.com">hello@momandpoplabs.com</button>
+    <div>
+      <span class="logo-text">Mom and Pop</span><span style="font-weight:400;font-size:0.8rem;color:#444"> Labs</span>
+    </div>
+    <a class="em" href="mailto:hello@momandpoplabs.com">hello@momandpoplabs.com</a>
   </nav>
 
   <section class="hero w">
     <div class="badge">Early Access</div>
     <h1>Your first <span class="accent">AI employee.</span></h1>
-    <p>Your own private AI that gets to know your business. Works across WhatsApp, iMessage, SMS, and phone.
-<br>Introducing The Desk.</span></p>
+    <p>Your own private AI that gets to know your business. Works across WhatsApp, iMessage, SMS, and phone. Introducing The Desk.</p>
     <div class="btns">
-      <button class="btn" onclick="openWaitlist()">Join Waitlist</button>
-      <a href="#pricing" class="btn-o">See Pricing</button>
+      <button class="btn" onclick="openModal()">Join the Waitlist</button>
+      <a href="#pricing" class="btn-o">See Pricing</a>
     </div>
   </section>
 
@@ -217,7 +241,7 @@
         <div class="setup">$150 one-time setup</div>
         <div class="pb">~7 mo payback</div>
         <ul><li>24/7 phone answering</li><li>WhatsApp / SMS</li><li>FAQ responses</li><li>Basic booking</li><li>Employee access controls</li></ul>
-        <a onclick="openWaitlist()" class="bo">Join Waitlist</button>
+        <button class="bo" onclick="openModal()">Join the Waitlist</button>
       </div>
       <div class="p-card hot">
         <div class="tag">Business</div><h3>Business</h3>
@@ -225,7 +249,7 @@
         <div class="setup">$200 one-time setup</div>
         <div class="pb">~4 mo payback</div>
         <ul><li>Everything in Starter</li><li>Customer profiles</li><li>Appointment reminders</li><li>No-show reduction</li><li>Google reviews</li><li>Customer retention</li><li>Bilingual support</li></ul>
-        <a onclick="openWaitlist()" class="bs">Join Waitlist</button>
+        <button class="bs" onclick="openModal()">Join the Waitlist</button>
       </div>
       <div class="p-card">
         <div class="tag">Growth</div><h3>Growth</h3>
@@ -233,7 +257,7 @@
         <div class="setup">$300 one-time setup</div>
         <div class="pb">~3 mo payback</div>
         <ul><li>Everything in Business</li><li>POS integration</li><li>Instagram DMs</li><li>Revenue analytics</li><li>Owner voice clones</li><li>Self-improving system</li><li>Priority support</li></ul>
-        <a onclick="openWaitlist()" class="bs">Join Waitlist</button>
+        <button class="bs" onclick="openModal()">Join the Waitlist</button>
       </div>
     </div>
     <div class="p-grid" style="margin-top: 12px; max-width: 600px;">
@@ -243,7 +267,7 @@
         <div class="setup">$0 upfront</div>
         <div class="pb">$0 to start</div>
         <ul><li>Everything in Business</li><li>We own the hardware</li><li>12-month minimum</li><li>Zero risk</li></ul>
-        <a onclick="openWaitlist()" class="bo">Join Waitlist</button>
+        <button class="bo" onclick="openModal()">Join the Waitlist</button>
       </div>
     </div>
   </section>
@@ -253,30 +277,33 @@
   <section class="cta w">
     <div class="cta-box">
       <h2>AI that runs your <span class="accent">front desk.</span></h2>
-      <p>Say hi.</p>
-      <a href="mailto:hello@momandpoplabs.com" class="btn">hello@momandpoplabs.com</button>
+      <p>Join the waitlist to be notified when The Desk launches.</p>
+      <button class="btn" onclick="openModal()">Join the Waitlist</button>
     </div>
   </section>
 
-  <div class="modal-bg" id="waitlist-modal" onclick="if(event.target===this)closeWaitlist()">
-    <div class="modal-box" style="position:relative">
-      <button class="form-close" onclick="closeWaitlist()">&times;</button>
-      <div class="form-fields" id="wl-fields">
-        <h3>Join Waitlist</h3>
-        <p>Be first to know when The Desk launches.</p>
-        <form id="wl-form" action="https://formsubmit.co/hello@momandpoplabs.com" method="POST">
-          <div class="form-field">
+  <div class="line"></div>
+
+  <!-- Waitlist Modal -->
+  <div class="modal-bg" id="waitlist-modal">
+    <div class="modal-box">
+      <button class="mclose" onclick="closeModal()">&times;</button>
+      <div class="mfields" id="wl-fields">
+        <h3>Join the Waitlist</h3>
+        <p class="msub">Be first to know when The Desk launches.</p>
+        <form id="wl-form">
+          <div class="mf">
             <label>Name</label>
             <input type="text" name="name" placeholder="Your name" required>
           </div>
-          <div class="form-field">
+          <div class="mf">
             <label>Email</label>
             <input type="email" name="email" placeholder="you@example.com" required>
           </div>
-          <div class="form-field">
+          <div class="mf">
             <label>Business type</label>
             <select name="business_type">
-              <option value="">Select your business type</option>
+              <option value="">Select your type</option>
               <option value="nail_salon">Nail Salon</option>
               <option value="barber_shop">Barber Shop</option>
               <option value="hair_salon">Hair Salon</option>
@@ -289,208 +316,53 @@
               <option value="other">Other</option>
             </select>
           </div>
-          <div class="form-field">
+          <div class="mf">
             <label>Phone (optional)</label>
             <input type="tel" name="phone" placeholder="+1 (555) 123-4567">
           </div>
-          <button type="submit" class="form-submit">Join Waitlist</button>
+          <button type="submit" class="msubmit">Join the Waitlist</button>
         </form>
       </div>
-      <div class="form-thank" id="wl-thank">
-        <h3>You're on the list! 🎉</h3>
-        <p style="color:#888;font-size:0.85rem;margin-top:8px;">Your data stays ours. We'll reach out when The Desk is ready.</p>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Waitlist Modal -->
-  <div class="modal-bg" id="waitlist-modal" onclick="if(event.target===this)closeWaitlist()">
-    <div class="modal-box">
-      <button class="form-close" onclick="closeWaitlist()">&times;</button>
-      <div class="form-fields" id="wl-fields">
-        <h3>Join the Waitlist</h3>
-        <p>Be first to know when The Desk launches.</p>
-        <form id="wl-form" method="POST" action="https://formspree.io/f/TBD">
-          <div class="form-field">
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Your name" required>
-          </div>
-          <div class="form-field">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="you@example.com" required>
-          </div>
-          <div class="form-field">
-            <label>Business type</label>
-            <select name="business_type">
-              <option value="">Select your business type</option>
-              <option value="nail_salon">Nail Salon</option>
-              <option value="barber_shop">Barber Shop</option>
-              <option value="hair_salon">Hair Salon</option>
-              <option value="restaurant">Restaurant / Cafe</option>
-              <option value="spa_wellness">Spa / Wellness</option>
-              <option value="auto_repair">Auto Repair</option>
-              <option value="dry_cleaner">Dry Cleaner</option>
-              <option value="retail">Retail / Boutique</option>
-              <option value="fitness">Fitness / Gym</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label>Phone (optional)</label>
-            <input type="tel" name="phone" placeholder="+1 (555) 000-0000">
-          </div>
-          <button type="submit" class="form-submit">Join the Waitlist</button>
-        </form>
-      </div>
-      <div class="form-thank" id="wl-thank">
-        <h3>You're on the list! 🎉</h3>
+      <div class="mthank" id="wl-thank">
+        <h3>You're on the list!</h3>
         <p style="color:#888;font-size:0.85rem;margin-top:8px;">We'll reach out when The Desk is ready.</p>
       </div>
     </div>
   </div>
 
-  <footer class="w"><p>© 2026 Mom and Pop Labs. All rights reserved.</p></footer>
+  <footer class="w"><p>2026 Mom and Pop Labs. All rights reserved.</p></footer>
+
   <script>
-    function useCase(id) {
-      document.querySelectorAll('.uc').forEach(e => e.classList.remove('active'));
-      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('uc-' + id).classList.add('active');
-      document.getElementById('flow-' + id).classList.add('active');
-      event.target.classList.add('active');
+    function openModal() {
+      document.getElementById('waitlist-modal').classList.add('show');
     }
-  </script>
-  <!-- Waitlist Modal -->
-  <script>
-    function openWaitlist() { document.getElementById('waitlist-modal').classList.add('show'); }
-    function closeWaitlist() { document.getElementById('waitlist-modal').classList.remove('show'); }
-    // Handle form submission
-    document.getElementById('wl-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = e.target;
-      try {
-        const r = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (r.ok) {
-          document.getElementById('wl-fields').classList.add('hide');
-          document.getElementById('wl-thank').classList.add('show');
-          setTimeout(closeWaitlist, 3000);
-        } else {
-          alert('Something went wrong. Try again or email hello@momandpoplabs.com');
-        }
-      } catch(err) {
-        alert('Something went wrong. Try again or email hello@momandpoplabs.com');
-      }
+    function closeModal() {
+      document.getElementById('waitlist-modal').classList.remove('show');
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('wl-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var form = e.target;
+        var data = {name:'',email:'',business_type:'',phone:'',date:''};
+        data.name = form.name.value;
+        data.email = form.email.value;
+        data.business_type = form.business_type.value;
+        data.phone = form.phone.value;
+        data.date = new Date().toISOString();
+        var list = JSON.parse(localStorage.getItem('desk_waitlist') || '[]');
+        list.push(data);
+        localStorage.setItem('desk_waitlist', JSON.stringify(list));
+        document.getElementById('wl-fields').classList.add('hide');
+        document.getElementById('wl-thank').classList.add('show');
+        setTimeout(closeModal, 3000);
+        form.reset();
+      });
+      document.getElementById('waitlist-modal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+      });
     });
     function useCase(id) {
-      document.querySelectorAll('.uc').forEach(e => e.classList.remove('active'));
-      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('uc-' + id).classList.add('active');
-      document.getElementById('flow-' + id).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
-  <!-- Waitlist Modal -->
-  <div class="modal-bg" id="waitlist-modal" onclick="if(event.target===this)closeWaitlist()">
-    <div class="modal-box">
-      <button class="form-close" onclick="closeWaitlist()">&times;</button>
-      <h3>Join the Waitlist</h3>
-      <p>Be first to know when The Desk launches.</p>
-      <form id="waitlist-form" onsubmit="submitWaitlist(event)">
-        <div class="form-field">
-          <label>Name</label>
-          <input type="text" name="name" placeholder="Your name" required>
-        </div>
-        <div class="form-field">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="you@example.com" required>
-        </div>
-        <div class="form-field">
-          <label>Business type</label>
-          <select name="business_type">
-            <option value="">Select your business type (optional)</option>
-            <option value="nail_salon">Nail Salon</option>
-            <option value="barber_shop">Barber Shop</option>
-            <option value="hair_salon">Hair Salon</option>
-            <option value="restaurant">Restaurant / Cafe</option>
-            <option value="auto_repair">Auto Repair</option>
-            <option value="spa_wellness">Spa / Wellness</option>
-            <option value="dry_cleaner">Dry Cleaner</option>
-            <option value="retail">Retail / Boutique</option>
-            <option value="fitness_gym">Fitness / Gym</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>Phone (optional)</label>
-          <input type="tel" name="phone" placeholder="+1 (555) 000-0000">
-        </div>
-        <button type="submit" class="btn" style="width:100%;margin-top:12px;">Submit</button>
-      </form>
-    </div>
-  </div>
-  <script>
-    function openWaitlist() {
-      document.getElementById('waitlist-modal').classList.add('active');
-    }
-    function closeWaitlist() {
-      document.getElementById('waitlist-modal').classList.remove('active');
-    }
-    function submitWaitlist(e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = {};
-      new FormData(form).forEach((v,k) => data[k] = v);
-      data.timestamp = new Date().toISOString();
-
-      // Store locally for now
-      let list = JSON.parse(localStorage.getItem('desk_waitlist') || '[]');
-      list.push(data);
-      localStorage.setItem('desk_waitlist', JSON.stringify(list));
-
-      closeWaitlist();
-      alert('Thanks! You're on the waitlist. We'll reach out when The Desk is ready.');
-      form.reset();
-    }
-    function useCase(id) {
-      document.querySelectorAll('.uc').forEach(e => e.classList.remove('active'));
-      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('uc-' + id).classList.add('active');
-      document.getElementById('flow-' + id).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
-
-  <script>
-    function openWaitlist() { document.getElementById('waitlist-modal').classList.add('show'); }
-    function closeWaitlist() { document.getElementById('waitlist-modal').classList.remove('show'); }
-    document.getElementById('wl-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = e.target;
-      try {
-        const r = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (r.ok) {
-          document.getElementById('wl-fields').style.display = 'none';
-          document.getElementById('wl-thank').style.display = 'block';
-          setTimeout(closeWaitlist, 3000);
-        }
-      } catch(err) { alert('Please email hello@momandpoplabs.com'); }
-    });
-    function useCase(id) {
-      document.querySelectorAll('.uc').forEach(e => e.classList.remove('active'));
-      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('uc-' + id).classList.add('active');
-      document.getElementById('flow-' + id).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
-
-</body>
-</html>
+      document.querySelectorAll('.uc').forEach(function(e) {
+        e.classList.remove('active');
+      });
+      document.querySelectorAll('.toggle
