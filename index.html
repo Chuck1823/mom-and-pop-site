@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace Dataset Monitor — Mom and Pop Labs</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+               background: #0f0f16; color: #e0e0e0; padding: 2rem; min-height: 100vh; }
+        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #00e676; }
+        .subtitle { color: #888; margin-bottom: 2rem; font-size: 0.9rem; }
+        .last-updated { color: #666; font-size: 0.75rem; margin-left: 1rem; }
+        
+        /* Big number */
+        .big-count { font-size: 4rem; font-weight: 800; color: #00e676; margin: 1rem 0; line-height: 1; }
+        .big-label { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Cards */
+        .card { background: #1a1a24; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+                border: 1px solid #2a2a35; }
+        .card h3 { color: #ccc; margin-bottom: 1rem; font-size: 1rem; }
+        
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+                margin-bottom: 2rem; }
+        
+        /* Quality bars */
+        .quality-row { display: flex; align-items: center; margin: 0.5rem 0; gap: 0.75rem; }
+        .quality-label { width: 70px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .quality-label.great { color: #00e676; }
+        .quality-label.good { color: #4fc3f7; }
+        .quality-label.mediocre { color: #ffb74d; }
+        .quality-label.poor { color: #ef5350; }
+        .bar-container { flex: 1; height: 8px; background: #252530; border-radius: 4px; overflow: hidden; }
+        .bar { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+        .bar.great { background: #00e676; }
+        .bar.good { background: #4fc3f7; }
+        .bar.mediocre { background: #ffb74d; }
+        .bar.poor { background: #ef5350; }
+        .quality-count { width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600; }
+        
+        /* Goal badge */
+        .goal-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem;
+                     font-weight: 600; margin-top: 1rem; }
+        .goal-badge.on-track { background: rgba(0,230,118,0.15); color: #00e676; }
+        .goal-badge.behind { background: rgba(255,183,77,0.15); color: #ffb74d; }
+        .goal-badge.far { background: rgba(239,83,80,0.15); color: #ef5350; }
+        
+        /* Task tags */
+        .task-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+        .task-tag { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;
+                   background: #252530; color: #999; }
+        
+        /* Refresh */
+        #refresh { position: fixed; bottom: 2rem; right: 2rem; background: #00e676; color: #0f0f16;
+                   border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer;
+                   font-size: 0.85rem; font-weight: 600; }
+        #refresh:hover { background: #00c862; }
+        #refresh:disabled { background: #333; color: #666; cursor: default; }
+    </style>
+</head>
+<body>
+    <h1>🧭 Trace Dataset Monitor <span class="last-updated" id="updated"></span></h1>
+    <p class="subtitle">Mom and Pop Labs — Agentic Reasoning Traces for Fine-Tuning</p>
+    
+    <!-- Big Number -->
+    <div class="card">
+        <div class="big-label">Total Traces (Across All Tracks)</div>
+        <div class="big-count" id="bigCount">—</div>
+        <div id="goalBadge" class="goal-badge on-track">Loading...</div>
+    </div>
+    
+    <!-- Tracks Grid -->
+    <div class="grid" id="tracksGrid"></div>
+    
+    <!-- Session Count -->
+    <div class="card">
+        <h3>Sessions Exported</h3>
+        <div class="big-count" id="sessionCount" style="font-size: 2.5rem;">—</div>
+        <div class="subtitle" style="margin-top: 0.5rem;">Unique conversation sessions processed into training traces</div>
+    </div>
+    
+    <button id="refresh" onclick="loadStats()">↻ Refresh</button>
+    
+    <script>
+        async function loadStats() {
+            const btn = document.getElementById('refresh');
+            btn.disabled = true;
+            btn.textContent = 'Loading...';
+            
+            try {
+                const res = await fetch('/api/stats');
+                const data = await res.json();
+                render(data);
+            } catch (e) {
+                console.error('Failed to load stats:', e);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '↻ Refresh';
+            }
+        }
+        
+        function render(data) {
+            document.getElementById('updated').textContent = `(Updated: ${data.updated_at})`;
+            document.getElementById('bigCount').textContent = data.total_traces.toLocaleString();
+            document.getElementById('sessionCount').textContent = data.total_sessions;
+            
+            // Goal badge
+            const target = 200;
+            const count = data.total_traces;
+            const pct = Math.min(100, Math.round((count / target) * 100));
+            const badge = document.getElementById('goalBadge');
+            
+            if (pct >= 100) {
+                badge.className = 'goal-badge on-track';
+                badge.textContent = `✅ ${target}-trace goal reached!`;
+            } else if (pct >= 50) {
+                badge.className = 'goal-badge on-track';
+                badge.textContent = `🎯 ${pct}% to initial goal (${count}/${target} traces)`;
+            } else if (pct >= 25) {
+                badge.className = 'goal-badge behind';
+                badge.textContent = `📈 ${pct}% to initial goal (${count}/${target} traces)`;
+            } else {
+                badge.className = 'goal-badge far';
+                badge.textContent = `🌱 ${pct}% to initial goal (${count}/${target} traces)`;
+            }
+            
+            // Track cards
+            const grid = document.getElementById('tracksGrid');
+            grid.innerHTML = '';
+            
+            for (const [name, track] of Object.entries(data.tracks)) {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                let qualityHTML = '';
+                const maxCount = Math.max(...Object.values(track.quality), 1);
+                
+                for (const [q, count] of Object.entries(track.quality)) {
+                    const pct = (count / maxCount) * 100;
+                    qualityHTML += `
+                        <div class="quality-row">
+                            <span class="quality-label ${q}">${q}</span>
+                            <div class="bar-container">
+                                <div class="bar ${q}" style="width: ${pct}%"></div>
+                            </div>
+                            <span class="quality-count">${count}</span>
+                        </div>`;
+                }
+                
+                let taskHTML = '';
+                if (track.tasks) {
+                    taskHTML = '<div class="task-tags">';
+                    for (const [task, c] of Object.entries(track.tasks)) {
+                        taskHTML += `<span class="task-tag">${task}: ${c}</span>`;
+                    }
+                    taskHTML += '</div>';
+                }
+                
+                card.innerHTML = `
+                    <h3>${name.toUpperCase()} Track</h3>
+                    <div style="font-size: 2rem; font-weight: 700; color: #00e676;">${track.total}</div>
+                    <div style="margin: 1rem 0;">${qualityHTML}</div>
+                    ${taskHTML}
+                `;
+                
+                grid.appendChild(card);
+            }
+        }
+        
+        // Initial load
+        loadStats();
+        
+        // Auto-refresh every 30s
+        setInterval(loadStats, 30000);
+    </script>
+</body>
+</html>
