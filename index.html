@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mom and Pop Labs — AI for Your Business</title>
-  <meta name="description" content="An AI assistant that answers your calls, books your customers, and lives in your shop.">
+  <meta name="description" content="An AI that runs your front desk, manages your books, and lives on your counter.">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: #0B0B0E; color: #f0f0f0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
@@ -21,7 +21,7 @@
     .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.2rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; max-width: 640px; margin: 0 auto; }
     .hero h1 em { font-style: normal; color: #888; }
     .hero h1 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { color: #777; font-size: 1.05rem; max-width: 480px; margin: 16px auto 24px; }
+    .hero p { color: #777; font-size: 1.05rem; max-width: 500px; margin: 16px auto 24px; }
     .btn { display: inline-block; padding: 11px 26px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; background: linear-gradient(135deg, #5EB5F7, #8B5CF6); color: #fff; }
     .btn:hover { background: linear-gradient(135deg, #3BA0E0, #7C3AED); }
     .btn-o { display: inline-block; padding: 11px 26px; border-radius: 6px; font-weight: 500; font-size: 0.95rem; border: 1px solid rgba(94,181,247,0.25); color: #5EB5F7; }
@@ -40,12 +40,7 @@
     .features { padding: 30px 0 20px; }
     .feature-list { display: flex; flex-wrap: wrap; gap: 8px 14px; }
     .feature-item { font-size: 0.85rem; color: #999; padding: 5px 12px; border-radius: 4px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
-    .how { padding: 40px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
-    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .how-step .num { font-size: 0.75rem; font-weight: 700; color: #5EB5F7; margin-bottom: 6px; }
-    .how-step h3 { font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
-    .how-step p { color: #666; font-size: 0.88rem; }
-    .flow { padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+    .flow { padding: 40px 0; }
     .flow-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 8px; }
     .flow-sub { color: #666; font-size: 0.9rem; margin-bottom: 28px; }
     .flow-steps { display: flex; align-items: flex-start; gap: 0; }
@@ -54,10 +49,26 @@
     .flow-step h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
     .flow-step p { color: #666; font-size: 0.78rem; }
     .flow-arrow { color: #333; font-size: 1.2rem; padding-top: 12px; }
+    .how { padding: 40px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .how-step .num { font-size: 0.75rem; font-weight: 700; color: #5EB5F7; margin-bottom: 6px; }
+    .how-step h3 { font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
+    .how-step p { color: #666; font-size: 0.88rem; }
+    .comparison { padding: 40px 0; }
+    .comp-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; }
+    .comp-table { width: 100%; border-collapse: collapse; }
+    .comp-table th, .comp-table td { padding: 12px 16px; font-size: 0.85rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .comp-table th { font-weight: 600; color: #5EB5F7; background: rgba(94,181,247,0.04); }
+    .comp-table td:first-child { color: #ccc; }
+    .comp-table td { color: #999; }
+    .comp-table .us { color: #A78BFA; font-weight: 600; }
+    .comp-table .no { color: #666; }
     .ownership { padding: 40px 0; }
     .ownership-box { background: rgba(167,139,250,0.04); border: 1px solid rgba(167,139,250,0.1); border-radius: 10px; padding: 32px; }
     .ownership-box h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
     .ownership-box h3 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .ownership-box h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
+    .ownership-box h2 .accent { background: linear-gradient(135deg, #5EB5F7, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .ownership-box p { color: #888; font-size: 0.95rem; line-height: 1.5; margin-bottom: 12px; }
     .ownership-box ul { list-style: none; padding: 0; }
     .ownership-box li { color: #999; font-size: 0.88rem; padding: 3px 0; }
@@ -87,6 +98,7 @@
     .row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
     @media (max-width: 768px) { .example-grid, .pricing-grid, .how-grid { grid-template-columns: 1fr; } }
     @media (max-width: 768px) { .flow-steps { flex-direction: column; gap: 16px; } .flow-arrow { display: none; } }
+    @media (max-width: 768px) { .comp-table { font-size: 0.75rem; } .comp-table th, .comp-table td { padding: 8px; } }
   </style>
 </head>
 <body>
@@ -100,8 +112,8 @@
 
   <section class="hero container">
     <div class="badge"><span class="badge-dot"></span>Early Access</div>
-    <h1>An AI assistant that answers your calls.<br><em>Lives in <span class="accent">your shop.</span></em></h1>
-    <p>You're busy. Your phone keeps ringing. Our agent picks up, talks to customers, books appointments, and never drops a lead. No cloud. No dashboard. Just a box on your counter.</p>
+    <h1>Not just an answering service.<br><em>It runs your <span class="accent">front desk.</span></em></h1>
+    <p>It answers calls and texts your customers. But it also manages bookings, cuts no-shows, brings back lost customers, handles owner queries, and monitors your reviews. One box. Your whole operation.</p>
     <div class="row">
       <a href="mailto:hello@momandpop.com" class="btn">Get Early Access</a>
       <a href="#pricing" class="btn-o">See Pricing</a>
@@ -109,44 +121,44 @@
   </section>
 
   <section class="examples container">
-    <div class="section-label">See It in Action</div>
-    <div class="section-title">What does it actually do for your business?</div>
+    <div class="section-label">What It Does</div>
+    <div class="section-title">It's the employee who never sleeps, never quits, and costs less than your phone bill.</div>
     <div class="example-grid">
       <div class="example">
-        <div class="label">Phone</div>
+        <div class="label">Phone & Chat</div>
         <h3>Never miss a customer call</h3>
         <div class="before">You're with a client. Phone rings. You miss it. They call someone else.</div>
-        <div class="after">Agent answers every call. Handles bookings, FAQs, messages. You stay focused.</div>
+        <div class="after">Agent answers every call 24/7. Calls, texts, WhatsApp. Handles bookings, FAQs, messages. You stay focused.</div>
+      </div>
+      <div class="example">
+        <div class="label">Intake</div>
+        <h3>New customer onboarding</h3>
+        <div class="before">New customer calls — you collect their name, service, preference, allergies. Takes forever.</div>
+        <div class="after">Agent collects everything on first contact. Customer profile saved. Ready for the visit.</div>
       </div>
       <div class="example">
         <div class="label">Bookings</div>
-        <h3>"Do you have space at 3?"</h3>
-        <div class="before">Customer calls, nobody's free to answer the phone for 45 minutes.</div>
-        <div class="after">Agent checks your calendar in real-time, offers open slots, books them, confirms.</div>
+        <h3>Full booking lifecycle</h3>
+        <div class="before">Customer calls, nobody's free to answer. Eventually someone calls back and manually books.</div>
+        <div class="after">Agent checks your calendar in real-time, offers slots, books, sends confirmation, reminds them.</div>
       </div>
       <div class="example">
         <div class="label">No-Shows</div>
         <h3>Cut no-shows in half</h3>
-        <div class="before">3-4 no-shows a week. That's $100-150 gone. Nobody reminded them.</div>
-        <div class="after">Automatic 24hr and 2hr reminder texts. No-shows drop by 50%+.</div>
-      </div>
-      <div class="example">
-        <div class="label">Reviews</div>
-        <h3>Manage your Google reviews</h3>
-        <div class="before">New review comes in. Nobody replies for days. Looks bad.</div>
-        <div class="after">Agent monitors reviews, drafts responses for your approval. You look responsive.</div>
+        <div class="before">3-4 no-shows a week. That's $100-150. Nobody reminded them. Nobody followed up.</div>
+        <div class="after">Automatic 24hr and 2hr reminders. No-shows drop 50%+. Failed no-shows get rescheduled automatically.</div>
       </div>
       <div class="example">
         <div class="label">Retention</div>
-        <h3>Bring back lost customers</h3>
-        <div class="before">Haven't seen Maria in 6 weeks. She moved on to the salon across town.</div>
-        <div class="after">Agent spots inactive customers, sends "time for your fill?" — they book again.</div>
+        <h3>Bring back customers who left</h3>
+        <div class="before">Haven't seen Maria in 6 weeks. No one noticed. She went elsewhere.</div>
+        <div class="after">Agent spots inactive customers, texts "time for your fill?" — they book. You didn't lift a finger.</div>
       </div>
       <div class="example">
         <div class="label">Owner</div>
-        <h3>You just talk to it</h3>
-        <div class="before">Managing bookings, calls, staff — all while working with your hands.</div>
-        <div class="after">"Text everyone tomorrow." "Who's working Thursday?" "How many no-shows?" Agent handles it.</div>
+        <h3>You run the business, it runs the desk</h3>
+        <div class="before">Managing bookings, calls, staff, reviews, vendors — all while working with your hands.</div>
+        <div class="after">"Send everyone a reminder." "Who's working Thursday?" "How many no-shows?" Agent handles it.</div>
       </div>
     </div>
   </section>
@@ -155,11 +167,15 @@
     <div class="section-label alt">What You Get</div>
     <div class="feature-list">
       <div class="feature-item">24/7 phone answering</div>
-      <div class="feature-item">WhatsApp / SMS booking</div>
+      <div class="feature-item">WhatsApp / SMS / text</div>
+      <div class="feature-item">Booking & calendar</div>
+      <div class="feature-item">Customer intake & profiles</div>
       <div class="feature-item">Appointment reminders</div>
-      <div class="feature-item">Review monitoring</div>
+      <div class="feature-item">No-show reduction</div>
       <div class="feature-item">Customer retention</div>
-      <div class="feature-item">Bilingual support</div>
+      <div class="feature-item">Review monitoring</div>
+      <div class="feature-item">Bilingual (EN/KO/VN)</div>
+      <div class="feature-item">Owner voice commands</div>
       <div class="feature-item">Your hardware, your data</div>
     </div>
   </section>
@@ -178,19 +194,19 @@
       <div class="flow-step">
         <div class="icon">🤖</div>
         <h4>Agent picks up</h4>
-        <p>Answers questions, checks availability, sounds natural.</p>
+        <p>Answers, collects info, checks availability. Professional tone.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
         <div class="icon">📅</div>
-        <h4>Books the appointment</h4>
-        <p>Adds to your calendar, sends confirmation. Done.</p>
+        <h4>Books & confirms</h4>
+        <p>Adds to calendar, sends confirmation text. Creates customer profile.</p>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
         <div class="icon">✅</div>
-        <h4>You get a notification</h4>
-        <p>"Booked: Sarah, full set, 3:15, $45." You stay focused on work.</p>
+        <h4>You get the summary</h4>
+        <p>"Booked: Sarah, full set, 3:15, $45." No extra work for you.</p>
       </div>
     </div>
   </section>
@@ -205,35 +221,56 @@
       </div>
       <div class="how-step">
         <div class="num">Step 2</div>
-        <h3>Tell us about your business</h3>
-        <p>Services, prices, hours, staff schedule. We enter everything for you.</p>
+        <h3>We set up your business</h3>
+        <p>Services, prices, hours, staff, booking calendar. We enter everything. You tell us, we build it.</p>
       </div>
       <div class="how-step">
         <div class="num">Step 3</div>
-        <h3>It starts answering</h3>
-        <p>Calls and texts route to the agent. You focus on running your business.</p>
+        <h3>It starts running</h3>
+        <p>Calls, texts, bookings, reminders — all automated. You focus on the work.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="comparison container">
+    <div class="section-label">How It Compares</div>
+    <div class="section-title">Not a chatbot. Not a booking app. Not a call center.</div>
+    <div class="comp-box">
+      <table class="comp-table">
+        <tr><th></th><th>Mom and Pop</th><th>AI Chatbot</th><th>Booking App<br>(Vagaro/Fresha)</th><th>Call Answering<br>Service</th><th>In-House<br>Receptionist</th></tr>
+        <tr><td>24/7 phone answering</td><td class="us">✅</td><td class="no">❌</td><td class="no">❌</td><td class="us">✅</td><td class="no">❌</td></tr>
+        <tr><td>Full booking lifecycle</td><td class="us">✅</td><td class="no">Partial</td><td class="us">✅</td><td class="no">❌</td><td class="us">✅</td></tr>
+        <tr><td>Customer intake & profiles</td><td class="us">✅</td><td class="no">Partial</td><td class="no">❌</td><td class="no">❌</td><td class="us">✅</td></tr>
+        <tr><td>No-show reduction</td><td class="us">✅</td><td class="no">❌</td><td class="no">Varies</td><td class="no">❌</td><td class="us">✅</td></tr>
+        <tr><td>Customer retention</td><td class="us">✅</td><td class="no">❌</td><td class="no">❌</td><td class="no">❌</td><td class="no">Rarely</td></tr>
+        <tr><td>Review management</td><td class="us">✅</td><td class="no">❌</td><td class="no">❌</td><td class="no">❌</td><td class="no">Rarely</td></tr>
+        <tr><td>Bilingual support</td><td class="us">✅</td><td class="no">Sometimes</td><td class="no">❌</td><td class="no">No</td><td class="no">Only if hired</td></tr>
+        <tr><td>Data stays on-site</td><td class="us">✅</td><td class="no">Cloud</td><td class="no">Cloud</td><td class="no">Cloud</td><td class="us">✅</td></tr>
+        <tr><td>Monthly cost</td><td class="us">$40–$95/mo</td><td>$50–$300/mo</td><td>$25–$100/mo</td><td>$100–$500/mo</td><td>$2,000–$3,500/mo</td></tr>
+        <tr><td>No per-call fees</td><td class="us">✅</td><td class="no">Varies</td><td class="no">N/A</td><td class="no">Varies</td><td class="us">✅</td></tr>
+      </table>
     </div>
   </section>
 
   <section class="ownership container">
     <div class="ownership-box">
       <div class="section-label alt">You Own It</div>
-      <h3>Your customers are yours. <span class="accent">Your agent is yours.</span></h3>
-      <p>Every SaaS tool you use — booking apps, POS systems, review tools — is harvesting your customer data. They read your calls, track your patterns, and sell insights to whoever pays.</p>
-      <p>Our box sits on your counter. No cloud. No dashboard. No account. No one can raise your prices overnight or change the terms. You own the hardware. All your customer data stays on it. Nobody else sees it.</p>
+      <h2>Your customers are yours. <span class="accent">Everything else too.</span></h2>
+      <p>Every SaaS tool — booking apps, POS systems, review platforms — harvests your customer data. Your patterns, your revenue, your relationships. They monetize it. You don't.</p>
+      <p>Our box sits on your counter. No cloud. No dashboard. No account. No one can raise prices overnight or change the rules. You own the hardware. All your customer data, profiles, and booking history stay on it. Nobody else touches it.</p>
+      <p>Someday, opt in to sell anonymized business data — pricing trends, service patterns, seasonal demand. Beauty and retail companies pay for this. You opt in. You keep 90%. We handle the rest.</p>
       <ul>
         <li>No cloud accounts, no dashboards, no passwords to manage</li>
-        <li>Customer data never leaves your box</li>
+        <li>All data stays on your box — customer profiles, booking history, revenue</li>
         <li>No price hikes, no feature changes, no terms-of-service surprises</li>
-        <li>Someday, opt in to sell anonymized business data — you keep 90% of profits</li>
+        <li>Opt-in data monetization — you keep 90% of profits, we handle sales</li>
       </ul>
     </div>
   </section>
 
   <section class="pricing container" id="pricing">
     <div class="section-label">Pricing</div>
-    <div class="section-title">One subscription for your whole business.</div>
+    <div class="section-title">Less than a part-time employee. More useful than a full one.</div>
     <div class="pricing-grid">
       <div class="pricing-card">
         <div class="tag">Starter</div>
@@ -257,10 +294,12 @@
         <div class="payback">~4 mo to pay back hardware</div>
         <ul>
           <li>Everything in Starter</li>
+          <li>Customer intake & profiles</li>
           <li>Appointment reminders (24hr + 2hr)</li>
+          <li>No-show reduction</li>
           <li>Google review monitoring</li>
           <li>Customer retention texts</li>
-          <li>Bilingual support</li>
+          <li>Bilingual support (EN/KO/VN)</li>
           <li>Standard support</li>
         </ul>
         <a href="mailto:hello@momandpop.com" class="btn-sm">Get Started</a>
@@ -276,6 +315,7 @@
           <li>POS integration (Square, etc.)</li>
           <li>Instagram DM automation</li>
           <li>Revenue analytics</li>
+          <li>Owner voice commands</li>
           <li>Priority support</li>
         </ul>
         <a href="mailto:hello@momandpop.com" class="btn-sm">Get Started</a>
@@ -301,7 +341,7 @@
 
   <section class="bottom-cta container">
     <div class="cta-box">
-      <h2>AI for your <span class="accent">business.</span></h2>
+      <h2>AI that runs your <span class="accent">front desk.</span></h2>
       <p>Say hi — we'd love to hear from you.</p>
       <a href="mailto:hello@momandpop.com" class="btn">hello@momandpop.com</a>
     </div>
